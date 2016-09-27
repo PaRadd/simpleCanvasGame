@@ -17,6 +17,7 @@
 		
 		var score = 0;
 		var lives = 2;
+		var diff = 0;
 		
 		var ballSHeight = 60;
 		var x = canvas.width/2;
@@ -95,6 +96,14 @@
 		    }
 		}
 		
+		function difficulty(){
+			if(score < 20){
+				diff = (score/20) + 1;
+			}else{
+				diff == 2.0;
+			}
+		}
+		
 		function resetBall(){
 			 x = canvas.width/2;
 			 y = canvas.height-60;
@@ -157,9 +166,10 @@
 			drawScore();
 			drawLives();
 			collisionDetection()
+			difficulty();
 			
-			x += dx;
-			y += dy;
+			x += dx*diff;
+			y += dy*diff;
 			
 			requestAnimationFrame(draw);
 			
