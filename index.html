@@ -12,13 +12,16 @@
 	<canvas id="myCanvas" width="1024" height="768"></canvas>
 	<script type="text/javascript">
 	
+		// init //
 		var canvas = document.getElementById('myCanvas');
 		var ctx = canvas.getContext("2d");
 		
+		//main variables //
 		var score = 0;
 		var lives = 2;
 		var diff = 0;
 		
+		// ball variables //
 		var ballSHeight = 60;
 		var x = canvas.width/2;
 		var y = canvas.height-ballSHeight;
@@ -26,6 +29,7 @@
 		var dy = -3;
 		var ballRadius = 10;
 		
+		// paddle variables //
 		var paddleHeight = 15;
 		var paddleWidth = 95;
 		var paddleX = (canvas.width - paddleWidth)/2;
@@ -33,6 +37,7 @@
 		var rightPressed = false;
 		var leftPressed = false;
 		
+		// brick variables //
 		var brickRowCount = 5;
 		var brickColumnCount = 11;
 		var brickWidth = 79;
@@ -49,6 +54,7 @@
 			}
 		}
 		
+		// key, mouse handlers //
 		document.addEventListener("keydown", keyDownHandler, false);
 		document.addEventListener("keyup", keyUpHandler, false);
 		document.addEventListener("mousemove", mouseMoveHandler, false);
@@ -77,6 +83,7 @@
 			}
 		}
 		
+		// collision //
 		function collisionDetection(){
 			for(c=0; c<brickColumnCount; c++) {
 		        for(r=0; r<brickRowCount; r++) {
@@ -96,6 +103,7 @@
 		    }
 		}
 		
+		// addititional functions //
 		function difficulty(){
 			if(score < 21){
 				diff = (score/20) + 1;
@@ -111,6 +119,7 @@
 			 dy = -3;
 		}
 		
+		// drawing functions //
 		function drawBall(){
 			ctx.beginPath();
 			ctx.arc(x, y, ballRadius, 0, Math.PI*2);
@@ -163,6 +172,7 @@
 			ctx.fillText("Lives: "+lives, canvas.width/2 + 15, 20);
 		}
 		
+		// main draw function //
 		function draw(){
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			
