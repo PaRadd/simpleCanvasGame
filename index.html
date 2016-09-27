@@ -97,10 +97,10 @@
 		}
 		
 		function difficulty(){
-			if(score < 20){
+			if(score < 21){
 				diff = (score/20) + 1;
 			}else{
-				diff == 2.0;
+				diff = 2.0;
 			}
 		}
 		
@@ -151,6 +151,12 @@
 			ctx.fillText("Score: "+score, canvas.width/2 - 95, 20);
 		}
 		
+		function drawDifficulty(){
+			ctx.font = "22px Arial";
+			ctx.fillStyle = "#920f23";
+			ctx.fillText("Difficulty:"+diff.toString().substr(0,3), 30, 20);
+		}
+		
 		function drawLives(){
 			ctx.font = "22px Arial";
 			ctx.fillStyle = "#66b266";
@@ -167,6 +173,7 @@
 			drawLives();
 			collisionDetection()
 			difficulty();
+			drawDifficulty();
 			
 			x += dx*diff;
 			y += dy*diff;
